@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: local-devex-deploy
+  name: nlp-app-deploy
   labels:
-    app: local-devex
+    app: nlp-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: local-devex
+      app: nlp-app
   template:
     metadata:
       labels:
-        app: local-devex
+        app: nlp-app
     spec:
       containers:
       - name: app
         imagePullPolicy: Never
-        image: local/devex:v1
+        image: nlp-app
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -32,13 +32,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: local-devex-svc
+  name: nlp-app-svc
 spec:
   type: NodePort
   selector:
-    app: local-devex
+    app: nlp-app
   ports:
-  - name: local-devex-port
+  - name: nlp-app-port
     protocol: TCP
     port: 8080
     targetPort: 8080
