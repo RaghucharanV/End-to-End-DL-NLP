@@ -49,7 +49,9 @@ For app.py contain code you can check by running on cmd....
     python app.py 
     
     ```
-    ```py
+
+```py
+
     def predict_text(input_text):
     res = predict_text_and_log(input_text)
     return res
@@ -69,11 +71,15 @@ For app.py contain code you can check by running on cmd....
 
         # Render the home template with the result
         return render_template('index.html', result=result)
-    ```
+```
+
+
     for [load.py](load.py) which support the app.py file to load model and predict
     text and log to a database
 
-    ```py
+    
+```py
+
     # main fun to work with model and pred.
     def model_pred(text):
         #to predict model
@@ -99,7 +105,8 @@ For app.py contain code you can check by running on cmd....
         db_connection.commit()
         return prediction
 
-    ```
+```
+
 **3. Containaize with docker**
     About Docker:
     Docker is a platform and tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts it needs, such as libraries and other dependencies, and ship it all out as one package.
@@ -108,21 +115,25 @@ For app.py contain code you can check by running on cmd....
     To build the Image:
 
     ```bash
+    
         docker build -t nlp-app .
     ```
     To run image:
 
     ```bash
+    
         docker run -p 8080:8080 nlp-app
     ```
     Docker hub image
 
     ```bash
+    
         docker tag nlp-app username/nlpapp1
     ```
     Docker login and push with
 
     ```bash
+    
         docker login
 
         docker push username/nlpapp1
@@ -141,12 +152,14 @@ For app.py contain code you can check by running on cmd....
     in PowerShell open with run as admin
 
     ```bash
+    
         minikube start
 
     ```
     check the status it running
 
     ```bash
+    
         minikube status
     ```
     Now build a yaml file for deploy into kubernetes cluster
@@ -158,6 +171,7 @@ For app.py contain code you can check by running on cmd....
         docker build -t nlp-app .
     ```
     ```bash
+    
         kubectl apply -f k8.yaml
     ```
     check depolyment
@@ -169,6 +183,7 @@ For app.py contain code you can check by running on cmd....
     run cluster
 
     ```bash
+    
         minikube service nlp-app-svc
     ```
 
