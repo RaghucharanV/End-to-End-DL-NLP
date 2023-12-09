@@ -115,35 +115,38 @@ For app.py contain code you can check by running on cmd....
 
 ```bash
     
-        docker build -t nlp-app .
+docker build -t nlp-app .
 ```
 
-    To run image:
+To run image:
+
+
 
 ```bash
     
-        docker run -p 8080:8080 nlp-app
+docker run -p 8080:8080 nlp-app
 ```
 
-    Docker hub image
+Docker hub image
+
 
 ```bash
     
-        docker tag nlp-app username/nlpapp1
+docker tag nlp-app username/nlpapp1
 ```
 
     Docker login and push with
 
-```bash
-    
-        docker login
 
-        docker push username/nlpapp1
+
+```bash
+docker login
+
+docker push username/nlpapp1
 ```
 **4.Kubernetes**
   About Kubernetes:
 Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform for automating the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a robust framework for running distributed systems and microservices efficiently.
-
     About minikube:
     Minikube is a lightweight, local Kubernetes distribution designed for development and testing purposes. It enables developers to run a single-node Kubernetes cluster on their local machine, providing an easy way to experiment with Kubernetes without the need for a full-scale cluster. 
 
@@ -151,40 +154,55 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
     add the path to Environmental variables
     in PowerShell open with run as admin
 
-```bash
-    
-        minikube start
-
-```
-    check the status it running
 
 ```bash
     
-        minikube status
+minikube start
+
 ```
-    Now build a yaml file for deploy into kubernetes cluster
+
+
+check the status it running
+
+
+
+```bash
+    
+minikube status
+```
+Now build a yaml file for deploy into Kubernetes cluster
 [yaml][yaml]
-    commands to exicute yaml file deploy in cluster using minikube
+commands to execute yaml file deploy in the cluster using minikube
 
 ```bash
 
-        docker build -t nlp-app .
+docker build -t nlp-app .
+
 ```
 ```bash
+
+kubectl apply -f k8.yaml
+
+```
+
+
+check depolyment
+
     
-        kubectl apply -f k8.yaml
-```
-    check depolyment
-
 ```bash
 
-        kubectl get pos,svc
+kubectl get pos,svc
+
 ```
+
+
     run cluster
 
+
 ```bash
-    
-        minikube service nlp-app-svc
+
+minikube service nlp-app-svc
+
 ```
 
 its end untill.............👋 🎉 🌟 🚀🙌 🤗
