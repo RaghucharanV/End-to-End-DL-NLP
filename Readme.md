@@ -1,24 +1,23 @@
 **CUSTOM AI MODEL DEPLOYMENT PIPELINE**
 `--------------------------------------------------------------------------------`
-It is pipeline that Extract data from local files predcits a deep learning model using NLP techniques.Load the data in Postgresql db table.Also bulid a frontend interface to interact with data. Future it contained using Docker and Build a cluster using minikube, inserted in kubernetes
+It is a pipeline that extracts data from local files predicts a deep learning model using NLP techniques. Load the data in the Postgresql db table.Also, build a frontend interface to interact with data. Future it contained using Docker and Build a cluster using minikube, inserted in Kubernetes
 `--------------------------------------------------------------------------------`
 ***Requirements**🚀🚀🚀🚀
 - Install in conda env or python env these dependencies
-  - python
+  - Python
   - Tensorflow
   - NLTK
-  - Numpy,pandas,matplotlib,seaborn,scikit-Learn
+  - Numpy, pandas,matplotlib,seaborn,scikit-Learn
   - minikube
   - Docker desktop install  
-BREIF:
+BRIEF:
 **1. AI model Development**
-    Here, Developed a simple Deep Learning model that predict Emotions of labels are ['joy', 'fear', 'anger', 'sadness', 'neutral'] in the given feedback text.
-    It import train, test csv files with cols are text and its labels.Which undergoes to EDA and Feature Engineering. Perform NLP techniques cleaning text, labeling, tokenization, padding, word embedding,etc. After all it split data in train set and test set, next model with  LSTM layer and dense with label and softmax,predict model with sample text.
-    Here the code,[Emotion-Analysis notebook](nlp.ipynb)
-
-    Specifically to save model using tensorflow.And also it is important to save its tokens of each text with its corresponding embedding to get accurate result after model save and use future.
+Here, Developed a simple Deep Learning model that predicts the Emotions of labels are ['joy', 'fear', 'anger', 'sadness', 'neutral'] in the given feedback text. It imports train, test csv files with cols are text and its labels. Which undergoes to EDA and Feature Engineering. Perform NLP techniques cleaning text, labeling, tokenization, padding, word embedding,etc. After all, it split data in a train set and test set, next model with  LSTM layer and dense with label and softmax, predict model with sample text.
+Here the code,[Emotion-Analysis notebook](nlp.ipynb)
+Specifically to save the model using TensorFlow.Also, it is important to save the tokens of each text with its corresponding embedding to get accurate results after model is saved and used future.
 
     ```python
+    
     #save tokens
     #it output a class and config 
     tokenizer_config = tokenizer.get_config()
@@ -38,18 +37,18 @@ BREIF:
     model.save("s_model")
     #to load model
     model1 = tf.keras.models.load_model('s_model')
+    
     ```
 **2.Web Service**
-    To build web service a frontend, Used flask lib from python,Flask is a micro web framework written in Python. It is designed to be lightweight, modular, and easy to use, allowing developers to quickly build web applications with minimal boilerplate code.
-
-    here, the code of [webapp](app.py)
-    imported flask lib with app.route('/') return the predcition of model with logging in database.
-    For app.py contain code 
-    you can check by runing on cmd....
+To build web service a frontend, Used flask lib from python,Flask is a micro web framework written in Python. It is designed to be lightweight, modular, and easy to use, allowing developers to quickly build web applications with minimal boilerplate code.
+here, the code of [webapp](app.py)
+imported flask lib with app.route('/') returns the prediction of the model by logging in database.
+For app.py contain code you can check by running on cmd....
     ```bash
+    
     python app.py 
+    
     ```
-
     ```py
     def predict_text(input_text):
     res = predict_text_and_log(input_text)
@@ -72,7 +71,7 @@ BREIF:
         return render_template('index.html', result=result)
     ```
     for [load.py](load.py) which support the app.py file to load model and predict
-    text and log to database
+    text and log to a database
 
     ```py
     # main fun to work with model and pred.
@@ -101,7 +100,7 @@ BREIF:
         return prediction
 
     ```
-**3.Containaize with docker**
+**3. Containaize with docker**
     About Docker:
     Docker is a platform and tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts it needs, such as libraries and other dependencies, and ship it all out as one package.
     [Dockerfile]:Dockerfile
@@ -136,16 +135,16 @@ BREIF:
     About minikube:
     Minikube is a lightweight, local Kubernetes distribution designed for development and testing purposes. It enables developers to run a single-node Kubernetes cluster on their local machine, providing an easy way to experiment with Kubernetes without the need for a full-scale cluster. 
 
-    First install [minikube](https://minikube.sigs.k8s.io/docs/start/)
-    add path to Environmental variables
+    First, install [minikube](https://minikube.sigs.k8s.io/docs/start/)
+    add the path to Environmental variables
 
-    in powershell open with run as admin
+    in PowerShell open with run as admin
 
     ```bash
         minikube start
 
     ```
-    check status it running
+    check the status it running
 
     ```bash
         minikube status
@@ -173,7 +172,7 @@ BREIF:
         minikube service nlp-app-svc
     ```
 
-its end untill.............👋 (Waving Hand)🎉 🌟 🚀🙌 🤗
+its end untill.............👋 🎉 🌟 🚀🙌 🤗
     
 
 
