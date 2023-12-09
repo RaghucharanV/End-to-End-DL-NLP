@@ -44,11 +44,11 @@ To build web service a frontend, Used flask lib from python,Flask is a micro web
 here, the code of [webapp](app.py)
 imported flask lib with app.route('/') returns the prediction of the model by logging in database.
 For app.py contain code you can check by running on cmd....
-    ```bash
+```bash
     
     python app.py 
     
-    ```
+```
 
 ```py
 
@@ -111,81 +111,81 @@ For app.py contain code you can check by running on cmd....
     About Docker:
     Docker is a platform and tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts it needs, such as libraries and other dependencies, and ship it all out as one package.
     [Dockerfile]:Dockerfile
-
     To build the Image:
 
-    ```bash
+```bash
     
         docker build -t nlp-app .
-    ```
+```
+
     To run image:
 
-    ```bash
+```bash
     
         docker run -p 8080:8080 nlp-app
-    ```
+```
+
     Docker hub image
 
-    ```bash
+```bash
     
         docker tag nlp-app username/nlpapp1
-    ```
+```
+
     Docker login and push with
 
-    ```bash
+```bash
     
         docker login
 
         docker push username/nlpapp1
-    ```
+```
 **4.Kubernetes**
-    About Kubernetes:
-
-    Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform for automating the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a robust framework for running distributed systems and microservices efficiently.
+  About Kubernetes:
+Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform for automating the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a robust framework for running distributed systems and microservices efficiently.
 
     About minikube:
     Minikube is a lightweight, local Kubernetes distribution designed for development and testing purposes. It enables developers to run a single-node Kubernetes cluster on their local machine, providing an easy way to experiment with Kubernetes without the need for a full-scale cluster. 
 
     First, install [minikube](https://minikube.sigs.k8s.io/docs/start/)
     add the path to Environmental variables
-
     in PowerShell open with run as admin
 
-    ```bash
+```bash
     
         minikube start
 
-    ```
+```
     check the status it running
 
-    ```bash
+```bash
     
         minikube status
-    ```
+```
     Now build a yaml file for deploy into kubernetes cluster
 [yaml][yaml]
     commands to exicute yaml file deploy in cluster using minikube
 
-    ```bash
+```bash
 
         docker build -t nlp-app .
-    ```
-    ```bash
+```
+```bash
     
         kubectl apply -f k8.yaml
-    ```
+```
     check depolyment
 
-    ```bash
+```bash
 
         kubectl get pos,svc
-    ```
+```
     run cluster
 
-    ```bash
+```bash
     
         minikube service nlp-app-svc
-    ```
+```
 
 its end untill.............👋 🎉 🌟 🚀🙌 🤗
     
